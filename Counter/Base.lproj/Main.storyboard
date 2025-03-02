@@ -26,6 +26,9 @@
                                         <color key="backgroundColor" name="AccentColor"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zeh-4O-g8D"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4W-59-JJW">
                                 <rect key="frame" x="166" y="226" width="61" height="120"/>

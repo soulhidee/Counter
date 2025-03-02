@@ -11,14 +11,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var counterLabel: UILabel!
     
     @IBOutlet weak var mainButton: UIButton!
-    var counter: Int = 0
+    private var counter: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        counterLabel.text = "Значение счётчика:\n\(counter)"
     }
 
     @IBAction func buttonTouchUp(_ sender: Any) {
         counter += 1
-        counterLabel.text = "\(counter)"
+        counterLabel.text = "Значение счётчика:\n\(counter)"
     }
     
 }

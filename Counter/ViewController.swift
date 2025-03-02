@@ -20,8 +20,16 @@ class ViewController: UIViewController {
         counterLabel.text = "Значение счётчика:\n\(counter)"
     }
 
-    @IBAction func mainButtonTouchUp(_ sender: Any) {
+    
+    @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
+        counterLabel.text = "Значение счётчика:\n\(counter)"
+    }
+    @IBAction func minusButtonTouchUp(_ sender: Any) {
+        counter -= 1
+        if counter < 0 {
+            counter = 0
+        }
         counterLabel.text = "Значение счётчика:\n\(counter)"
     }
     

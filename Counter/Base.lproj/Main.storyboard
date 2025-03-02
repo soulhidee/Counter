@@ -38,6 +38,14 @@
                                     <action selector="minusButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6tw-dB-Y5n"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B3C-S9-gMb">
+                                <rect key="frame" x="76" y="362" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4W-59-JJW">
                                 <rect key="frame" x="-10" y="176" width="412" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,6 +70,7 @@
                     </view>
                     <connections>
                         <outlet property="counterLabel" destination="R4W-59-JJW" id="8Cq-Xa-4fR"/>
+                        <outlet property="historyTextView" destination="B3C-S9-gMb" id="N56-bs-WBb"/>
                         <outlet property="minusButton" destination="U24-TC-5yH" id="tY5-CZ-H75"/>
                         <outlet property="plusButton" destination="3iE-Ct-69Z" id="iVR-69-8ot"/>
                         <outlet property="resetButton" destination="hh3-tX-Gaf" id="2qd-b9-cEN"/>
@@ -76,6 +85,9 @@
         <image name="arrow.clockwise.circle.fill" catalog="system" width="128" height="123"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -8,10 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var counterLabel: UILabel!
-    @IBOutlet weak var mainButton: UIButton!
     
     private var counter: Int = 0
     
@@ -30,6 +30,10 @@ class ViewController: UIViewController {
         if counter < 0 {
             counter = 0
         }
+        counterLabel.text = "Значение счётчика:\n\(counter)"
+    }
+    @IBAction func resetButtonTouchUp(_ sender: Any) {
+        counter = 0
         counterLabel.text = "Значение счётчика:\n\(counter)"
     }
     

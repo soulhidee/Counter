@@ -6,6 +6,11 @@
 //
 
 import UIKit
+extension Int {
+    var counterInfo: String {
+        return "Значение счётчика:\n\(self)"
+    }
+}
 
 class ViewController: UIViewController {
     @IBOutlet weak var historyTextView: UITextView!
@@ -14,29 +19,36 @@ class ViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var counterLabel: UILabel!
     
-    private var counter: Int = 0
+    private var counter: Int = 0 {
+        didSet {
+            updateCounterLabel()
+        }
+    }
+    private func updateCounterLabel() {
+            counterLabel.text = counter.counterInfo //
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        counterLabel.text = "Значение счётчика:\n\(counter)"
+        updateCounterLabel()
     }
 
     
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
-        counterLabel.text = "Значение счётчика:\n\(counter)"
+        
     }
     @IBAction func minusButtonTouchUp(_ sender: Any) {
         counter -= 1
         if counter < 0 {
             counter = 0
         }
-        counterLabel.text = "Значение счётчика:\n\(counter)"
+
     }
     @IBAction func resetButtonTouchUp(_ sender: Any) {
         counter = 0
-        counterLabel.text = "Значение счётчика:\n\(counter)"
     }
     
 }
+
 

@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var mainButton: UIButton!
     
     override func viewDidLoad() {

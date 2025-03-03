@@ -11,6 +11,12 @@ extension Int {
         return "Значение счётчика:\n\(self)"
     }
 }
+extension String {
+    var historyTextViewInfo: String {
+        return "История изменений:\n\(self)"
+    }
+}
+
 
 class ViewController: UIViewController {
     @IBOutlet weak var historyTextView: UITextView!
@@ -19,36 +25,67 @@ class ViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var counterLabel: UILabel!
     
+
     private var counter: Int = 0 {
         didSet {
             updateCounterLabel()
         }
     }
-    private func updateCounterLabel() {
-            counterLabel.text = counter.counterInfo //
+    
+    private var history: String = "" {
+        didSet {
+            updatehistoryTextView()
         }
+    }
+    
+    private func updateCounterLabel() {
+        counterLabel.text = counter.counterInfo
+    }
+    
+    
+    private func updatehistoryTextView() {
+        historyTextView.text = history.historyTextViewInfo
+    }
+    
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCounterLabel()
+        updatehistoryTextView()
     }
 
     
+    
+    
+    
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
+        historyTextView.text += "\nзначение изменено на +1"
         
     }
     @IBAction func minusButtonTouchUp(_ sender: Any) {
-        counter -= 1
-        if counter < 0 {
-            counter = 0
+        if counter > 0 {
+            counter -= 1
+            historyTextView.text += "\nзначение изменено на -1"
+        } else {
+            historyTextView.text += "\nпопытка уменьшить значение счётчика ниже 0"
         }
-
+        
+        
+        
+//        counter -= 1
+//        historyTextView.text += "\nзначение изменено на -1"
+//        if counter < 0 {
+//            counter = 0
+//            historyTextView.text += "\nпопытка уменьшить значение счётчика ниже 0"
+//        }
     }
     @IBAction func resetButtonTouchUp(_ sender: Any) {
         counter = 0
     }
     
 }
+
 
 

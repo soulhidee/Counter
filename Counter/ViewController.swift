@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var counterLabel: UILabel!
     
+    
+    let dateString = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
 
     private var counter: Int = 0 {
         didSet {
@@ -33,6 +35,7 @@ class ViewController: UIViewController {
     }
     
     private var history: String = "" {
+        
         didSet {
             updatehistoryTextView()
         }
@@ -47,7 +50,6 @@ class ViewController: UIViewController {
         historyTextView.text = history.historyTextViewInfo
     }
     
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +58,9 @@ class ViewController: UIViewController {
     }
 
     
-    
-    
-    
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
-        historyTextView.text += "\nзначение изменено на +1"
+        historyTextView.text += "значение изменено на +1"
         
     }
     @IBAction func minusButtonTouchUp(_ sender: Any) {
@@ -72,17 +71,10 @@ class ViewController: UIViewController {
             historyTextView.text += "\nпопытка уменьшить значение счётчика ниже 0"
         }
         
-        
-        
-//        counter -= 1
-//        historyTextView.text += "\nзначение изменено на -1"
-//        if counter < 0 {
-//            counter = 0
-//            historyTextView.text += "\nпопытка уменьшить значение счётчика ниже 0"
-//        }
     }
     @IBAction func resetButtonTouchUp(_ sender: Any) {
         counter = 0
+        historyTextView.text += "\nзначение сброшено"
     }
     
 }

@@ -17,7 +17,6 @@ extension String {
     }
 }
 
-
 class ViewController: UIViewController {
     @IBOutlet weak var historyTextView: UITextView!
     @IBOutlet weak var resetButton: UIButton!
@@ -25,8 +24,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var counterLabel: UILabel!
     
-
-    let dateString = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
     private var counter: Int = 0 {
         didSet {
             updateCounterLabel()
@@ -34,11 +31,17 @@ class ViewController: UIViewController {
     }
     
     private var history: String = "" {
-        
         didSet {
             updatehistoryTextView()
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateCounterLabel()
+        updatehistoryTextView()
+    }
+    
     
     private func updateCounterLabel() {
         counterLabel.text = counter.counterInfo
@@ -54,12 +57,7 @@ class ViewController: UIViewController {
            history += "[\(dateString)]: \(message)\n"
        }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateCounterLabel()
-        updatehistoryTextView()
-    }
+
 
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
@@ -75,6 +73,7 @@ class ViewController: UIViewController {
         }
         
     }
+    
     @IBAction func resetButtonTouchUp(_ sender: Any) {
         counter = 0
         addHistoryEntry("значение сброшено")

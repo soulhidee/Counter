@@ -31,16 +31,19 @@ class ViewController: UIViewController {
         }
     }
     
-    private var history: String = "" {
+    private var historyLog: String = "" {
         didSet {
-            updatehistoryTextView()
+            updateHistoryTextView()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCounterLabel()
-        updatehistoryTextView()
+        updateHistoryTextView()
+        historyTextView.isEditable = false
+        historyTextView.isScrollEnabled = true
+        scrollTextViewToBottom()
     }
     
     
@@ -49,21 +52,27 @@ class ViewController: UIViewController {
     }
     
     
-    private func updatehistoryTextView() {
-        historyTextView.text = history.historyTextViewInfo
+    private func updateHistoryTextView() {
+        historyTextView.text = historyLog.historyTextViewInfo
+        scrollTextViewToBottom()
     }
     
     private func addHistoryEntry(_ message: String) {
            let dateString = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
-           history += "[\(dateString)]: \(message)\n"
+           historyLog += "[\(dateString)]: \(message)\n"
+       }
+    
+    private func scrollTextViewToBottom() {
+           let range = NSRange(location: historyTextView.text.count - 1, length: 1)
+           historyTextView.scrollRangeToVisible(range)
        }
     
 
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
         addHistoryEntry("значение изменено на +1")
-        
     }
+    
     @IBAction func minusButtonTouchUp(_ sender: Any) {
         if counter > 0 {
             counter -= 1
@@ -71,7 +80,6 @@ class ViewController: UIViewController {
         } else {
             addHistoryEntry ("попытка уменьшить значение счётчика ниже 0")
         }
-        
     }
     
     @IBAction func resetButtonTouchUp(_ sender: Any) {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 extension Int {
     var counterInfo: String {
         return "Значение счётчика:\n\(self)"
@@ -57,7 +58,6 @@ class ViewController: UIViewController {
            history += "[\(dateString)]: \(message)\n"
        }
     
-
 
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1

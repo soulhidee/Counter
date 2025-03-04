@@ -55,14 +55,14 @@ class ViewController: UIViewController {
         scrollTextViewToBottom()
     }
     
-    private func addHistoryEntry(_ message: String) {
-           let dateString = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
-           historyLog += "[\(dateString)]: \(message)\n"
-       }
-    
     private func scrollTextViewToBottom() {
            let range = NSRange(location: historyTextView.text.count - 1, length: 1)
            historyTextView.scrollRangeToVisible(range)
+       }
+    
+    private func addHistoryEntry(_ message: String) {
+           let dateString = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
+           historyLog += "[\(dateString)]: \(message)\n"
        }
     
     @IBAction func plusButtonTouchUp(_ sender: Any) {
@@ -83,7 +83,6 @@ class ViewController: UIViewController {
         counter = 0
         addHistoryEntry("значение сброшено")
     }
-    
 }
 
 

@@ -46,11 +46,9 @@ class ViewController: UIViewController {
         scrollTextViewToBottom()
     }
     
-    
     private func updateCounterLabel() {
         counterLabel.text = counter.counterInfo
     }
-    
     
     private func updateHistoryTextView() {
         historyTextView.text = historyLog.historyTextViewInfo
@@ -67,7 +65,6 @@ class ViewController: UIViewController {
            historyTextView.scrollRangeToVisible(range)
        }
     
-
     @IBAction func plusButtonTouchUp(_ sender: Any) {
         counter += 1
         addHistoryEntry("значение изменено на +1")

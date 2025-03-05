@@ -18,12 +18,12 @@ extension String {
     }
 }
 
-class ViewController: UIViewController {
-    @IBOutlet weak var historyTextView: UITextView!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var counterLabel: UILabel!
+final class ViewController: UIViewController {
+    @IBOutlet weak private var historyTextView: UITextView!
+    @IBOutlet weak private var resetButton: UIButton!
+    @IBOutlet weak private var minusButton: UIButton!
+    @IBOutlet weak private var plusButton: UIButton!
+    @IBOutlet weak private var counterLabel: UILabel!
     
     private var counter: Int = 0 {
         didSet {
@@ -65,12 +65,12 @@ class ViewController: UIViewController {
            historyLog += "[\(dateString)]: \(message)\n"
        }
     
-    @IBAction func plusButtonTouchUp(_ sender: Any) {
+    @IBAction private func plusButtonTouchUp(_ sender: Any) {
         counter += 1
         addHistoryEntry("значение изменено на +1")
     }
     
-    @IBAction func minusButtonTouchUp(_ sender: Any) {
+    @IBAction private func minusButtonTouchUp(_ sender: Any) {
         if counter > 0 {
             counter -= 1
             addHistoryEntry("значение изменено на -1")
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func resetButtonTouchUp(_ sender: Any) {
+    @IBAction private func resetButtonTouchUp(_ sender: Any) {
         counter = 0
         addHistoryEntry("значение сброшено")
     }

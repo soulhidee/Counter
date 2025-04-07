@@ -25,20 +25,27 @@ final class ViewController: UIViewController {
     @IBOutlet weak private var plusButton: UIButton!
     @IBOutlet weak private var counterLabel: UILabel!
     
+    private let counterKey = "counterValue"
+    private let historyKey = "historyLog"
+    
+    
     private var counter: Int = 0 {
         didSet {
             updateCounterLabel()
+            UserDefaults.standard.set(counter, forKey: counterKey)
         }
     }
     
     private var historyLog: String = "" {
         didSet {
             updateHistoryTextView()
+            UserDefaults.standard.set(historyLog, forKey: historyKey)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSavedData()
         updateCounterLabel()
         updateHistoryTextView()
         historyTextView.isEditable = false
@@ -64,6 +71,13 @@ final class ViewController: UIViewController {
            let dateString = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .medium)
            historyLog += "[\(dateString)]: \(message)\n"
        }
+    
+    private func loadSavedData() {
+        let savedCounter = UserDefaults.standard.integer(forKey: counterKey)
+        let savedHistory = UserDefaults.standard.string(forKey: historyKey) ?? ""
+        counter = savedCounter
+        historyLog = savedHistory
+    }
     
     @IBAction private func plusButtonTouchUp(_ sender: Any) {
         counter += 1
